@@ -2,28 +2,25 @@ package com.mkyong;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.Random;
 
 public class HelloWorld {
-
     private static final Logger logger = LogManager.getLogger(HelloWorld.class);
+    private static final Random random = new Random();
 
     public static void main(String[] args) {
-
-        logger.debug("Hello from Log4j 2");
-
-        // in old days, we need to check the log level log to increase performance
-        /*if (logger.isDebugEnabled()) {
-            logger.debug("{}", getNumber());
-        }*/
-
-        // with Java 8, we can do this, no need to check the log level
-        while (true)//test rolling file
-            logger.debug("hello {}", () -> getNumber());
-
+        while (true) {
+            logger.debug("Testing {}", () -> getRandomNumber());
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    static int getNumber() {
-        return 5;
+    static int getRandomNumber() {
+        int randomInt = random.nextInt(1000);
+        return randomInt;
     }
-
 }
