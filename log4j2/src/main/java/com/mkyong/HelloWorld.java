@@ -12,7 +12,7 @@ public class HelloWorld {
         while (true) {
             logger.debug("Testing {}", () -> getRandomNumber());
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
